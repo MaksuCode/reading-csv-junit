@@ -8,6 +8,9 @@ import static org.junit.jupiter.api.Assertions.*;
  * Aşağıda Csv , excell tipindeki dosyalardan data çekme örneğini bulabilirsiniz. Junit-5'te bulunan
  *- @CsvFileSource ve @CsvSource anotasyonları ile bu işlemi kolay bir şekilde yapabilirsiniz.
  *  dataların bulunduğu dosyaları /test/resource altına eklemeniz ve path'lerini anotasyonlar içerisinde vermeniz yeterli.
+ *
+ *  numLinesToSkip parametresi kaç satırı atlamak istediğinizi belirtiyor. Örneğin aşağıda 1 satır atlamışız ki column adlarını data olarak ele almayalım.
+ *- @CsvFileSource anotasyonunun alabileceği parametreler ile ilgili README.md dosyasındaki linkleri inceleyebilirsiniz.
  */
 public class CsvDataProviderTest {
 
