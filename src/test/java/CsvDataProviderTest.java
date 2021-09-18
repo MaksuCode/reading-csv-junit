@@ -4,27 +4,35 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Aşağıda Csv , excell tipindeki dosyalardan data çekme örneğini bulabilirsiniz. Junit-5'te bulunan
+ *- @CsvFileSource ve @CsvSource anotasyonları ile bu işlemi kolay bir şekilde yapabilirsiniz.
+ *  dataların bulunduğu dosyaları /test/resource altına eklemeniz ve path'lerini anotasyonlar içerisinde vermeniz yeterli.
+ */
 public class CsvDataProviderTest {
 
+    // data.csv dosyasına ulaşarak oradaki değerleri çekebiliyoruz.
     @ParameterizedTest
     @CsvFileSource(resources = "/data.csv", numLinesToSkip = 1)
-    public void readFromCSVFileTest_1(String name , String surname , int age){
-        assertNotNull(name);
-        assertNotNull(surname);
-        assertTrue(age > 0);
+    public void readFromCSVFileTest_1(String column_1 , String column_2 , int column_3){
+        assertNotNull(column_1);
+        assertNotNull(column_2);
+        assertTrue(column_3 > 0);
     }
 
+    // csv file'a ulaşma 2. örnek
     @ParameterizedTest
     @CsvFileSource(resources = "/data_2.csv", numLinesToSkip = 1)
     public void readFromCSVFileTest_2(String expected , String actual){
         assertEquals(expected , actual);
     }
 
+    // Burada dosyaya ulaşmak yerine ufak datalar için @CsvSource kullanılabiliyor ve içine aşağıdaki şekilde yazabiliyoruz.
     @ParameterizedTest
     @CsvSource(value = {
                 "Mustafa,  Aksu,  26" ,
                 "Mehmet,  Gül, 44 " ,
-                "İlhan,  Yılmaz,  33"})
+                "İpek,  Yılmaz,  33"})
     public void readFromCSVTest(String name , String surname , int age){
         assertNotNull(name);
         assertNotNull(surname);
